@@ -1,0 +1,1290 @@
+<mvc:View
+    id="IdView"
+    xmlns:uxap="sap.uxap"
+    controllerName="nmspcpoc.poc.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    displayBlock="true"
+    xmlns="sap.m"
+    xmlns:lay="sap.ui.layout"
+    xmlns:css="sap.ui.core.CSSSize"
+    xmlns:ObHead="sap.uxap"
+    xmlns:core="sap.ui.core"
+    xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1"
+    xmlns:calendar="sap.ui.unified.calendar" 
+>
+    <Shell id="shell">
+        <App id="app" autoFocus="false">
+            <pages>
+                <Page id="page" title="{i18n>title}" showHeader="true">
+                 <ScrollContainer id="sc"
+		                height="100%"
+		                width="100%"
+		                vertical="true"
+                        horizontal="true"
+                        
+                        > 
+
+            <FlexBox id="flxbx0" alignItems="Start">   <!-- Flexbox tipo de contenedor horizontal, los objetos se alinean horizontalmente  -->
+    <!-- Sección de cabecera  -->
+                           <!-- State of California  -->
+                  
+                    <Label id="lbl_hdstate" text="{i18n>lbl_hdstate}" class="titleM"  width="auto" >
+                    <layoutData><!-- growfactor 1 todos los objetos dentro del contenedor se dividen en espacios iguales  -->
+                        <FlexItemData id="flxitdata0" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <lay:VerticalLayout id="vly0"> <!-- Contenedor vertical, los objetos se alienan uno debajo del otro  -->
+
+                    <!-- lbl_hddept DEPARTMENT OF WATER RESOURCES  -->
+                    <Label id="lbl_hddept" text="{i18n>lbl_hddept}" class="titleDWR" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata1" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddept OROVILLE FIELD DIVISION  -->
+                    <Label id="lbl_hdflddiv" text="{i18n>lbl_hdflddiv}" class="titleFD" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata2" growFactor="1" maxHeight="100%" maxWidth="100%" minHeight="0%" minWidth="0%" baseSize="10%"/>
+                    </layoutData>
+                    </Label>
+
+                     <!-- lbl_hdmidcond MIDNIGHT CONDITIONS  -->
+                     <Label id="lbl_hdmidcond" text="{i18n>lbl_hdmidcond}" class="titleMNC" width="100%" design="Bold" textAlign="Center" vAlign="Bottom">
+                     <layoutData>
+                        <FlexItemData id="flxitdata3" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                    <!-- lbl_hddate se obtiene del sistema, controller funcion oninit  -->
+                    <Label width="100%" id="lbl_hddate" text="{/valDateFormatted}" textAlign="Center" vAlign="Bottom" class="titledate">
+                    <layoutData>
+                        <FlexItemData id="flxitdata4" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    
+                     </lay:VerticalLayout>   
+    <!-- Termina layout vertical para agrupar cabecera -->
+                     
+                    <!-- lbl_hdresage The Resources Agency -->
+                    <Label id="lbl_hdresage" text="{i18n>lbl_hdresage}" class="titleMr" width="100%" textAlign="End">
+                     
+                    <layoutData>
+                        <FlexItemData id="flxitdata6" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                    <Label id="lbl_hdresagesp" text=""  width="40px" textAlign="End"/>
+                 </FlexBox> 
+
+                 
+
+         <!-- Inicia sección de nombre de operador -->
+                <FlexBox id="flxbx1" alignItems="Center" class="sapUiDemoFlexBoxSizeAdjustmentsZeroWidthItems">
+                <!-- se creo un flexbox "vacío como separador" -->
+                <Label id="lbl_hdopempty" text="" class="titleOpNme" design="Bold" width="100%" textAlign="Begin">
+                    <layoutData>
+                        <FlexItemData id="flxitdata7" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+
+                <!-- lbl_hddopname Operator Name: " -->
+                <Label width="100%" id="lbl_hddopname" text="{i18n>lbl_hddopname}" labelFor="ipt_hdopname" class="sapUiMediumMarginEnd" textAlign="End">
+                </Label>
+                    <FlexBox id="flxbx2" alignItems="Center">
+                      <Input id="ipt_hdopname" value="{/valOpName}" width="300px" class="sapUiMediumMarginBegin" textAlign="Begin" tooltip="The field display the name of the user currently logged in" enabled="false"/>
+                    
+                    </FlexBox><!-- se creo un flexbox "vacío como separador" -->
+                    <Label id="lbl_hdopempty1" text="" design="Bold" width="100%" textAlign="Center">
+                    <layoutData>
+                        <FlexItemData id="flxitdata10" growFactor="1"/>
+                    </layoutData>
+                    </Label>
+                </FlexBox>
+                 <Label width="100%" id="lbl_hddopnamesp" text="" labelFor="ipt_hdopname" class="titleDWR" textAlign="End"/>
+            
+<!-- Termina sección de nombre de operador -->
+<!-- sección POC jurisdiction" -->
+                <FlexBox id="flx2">                 
+                <Label text="{i18n>lbl_pocTitle}" id="lbl_pocTitle" design="Bold" class="HeaderLabelM"/>
+                </FlexBox>
+                <FlexBox id="flx3">  
+                  <Button id="btn_btnCleaPOCr" text="{i18n>btn_clear}" press="onClear" class="btnrRem" app:id="POC_JurisdRem" icon="sap-icon://delete"/>
+                </FlexBox>
+                <FlexBox id="flx4" >
+                 <Label id="lblbapppltSwydTxtRmrk" text="" class="rmrks"></Label>
+                 
+                 </FlexBox>
+                  <FlexBox id="flx5" >
+                   <Label id="lblbapppltSwydTxtRmrk1" text="" class="rmrks"></Label>
+                  <TextArea id="POC_JurisdRem" value="{/val_pocRem}" width="1189px" height="250px" tooltip="{/valTTremark}" />
+                    </FlexBox>
+                    <Label id="lblbapppltSwydspace" text="" class="rmrks"></Label>
+<!-- Termina sección POC jurisdiction" -->
+<!-- Empieza Cabecera de sección Security Threat Levels" -->
+                <FlexBox id="flx7">
+                <!-- Security Threat Levels -->
+                <Label text="{i18n>lblSecThTvHdr}" id="lblSecThTvHdr" design="Bold" class="HeaderLabelM"/>
+                </FlexBox>
+
+                 <lay:VerticalLayout id="vl_SecThreat_lvls" class="sapUiContentPadding equalColumns">
+                  <!-- Security Threat Levels items" -->
+                     <FlexBox id="flx_SecThreatLvls">
+                        <!-- lbl_scaHost=Scada on Host: --> 
+                        <Label id="lbl_SecThreatLvls_nat" text="{i18n>lbl_SecThreatLvls_nat}" class="comboLabel0"/>
+
+                             <!-- Los items de combo box se declaran en control y se instancían con items="{/lst_AquedCtrl}" -->
+                             <!-- selectedKey valor seleccionado por default -->
+                        <ComboBox id="cbx_SecThreatLvls_nat" items="{/lstStlNat}" 
+                        selectedKey="{/val_lstStlNat}" tooltip="{/val_TTipCombo}" 
+                        width="180px"
+                        change="OnCbxChng" 
+                        app:cbxName="cbx_SecThreatLvls_nat" 
+                        app:dataSource="lstStlNat" 
+                        app:selkey="val_lstStlNat"
+                        app:icon="SecThr_color"
+                        >
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_nat" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                            <core:Icon size="1.5em" id="SecThr_color" src="sap-icon://border" class="icon" />
+
+                            <!-- lbl_SecThreatLvls_dwr=DWR: -->
+                         <Label id="lbl_SecThreatLvls_dwr" text="{i18n>lbl_SecThreatLvls_dwr}" 
+                         class="comboLabel0"/>
+
+                        <ComboBox id="cbx_SecThreatLvls_dwr" items="{/lstStlDwr}" 
+                        selectedKey="{/val_lstStlDwr}" 
+                        tooltip="{/val_TTipCombo}" 
+                        width="180px"
+                        change="OnCbxChng" 
+                        app:cbxName="cbx_SecThreatLvls_dwr" 
+                        app:dataSource="lstStlDwr" 
+                        app:selkey="val_lstStlDwr"
+                        app:icon="SecDwr_color">
+                            <items>
+                            <!-- key="{key}" text="{text} se instancían los valores de la lista declarada en el controlador-->
+                            <core:Item id="coreitm_SecThreatLvls_dwr" key="{key}" text="{text}"/>
+                            </items>
+                        </ComboBox>
+                         <core:Icon size="1.5em" id="SecDwr_color" src="sap-icon://border" class="icon"/>
+                        
+                        </FlexBox>
+<!-- Empieza Cabecera de sección Security Threat Levels" -->
+
+
+                      
+<!--Inicia sección Tablas de reportes-->
+              <lay:VerticalLayout id="vlyTbls" class="sapUiContentPadding equalColumns">
+                           
+
+                                <FlexBox id="flx_TblWcd0">                                      
+                                <Label text="{i18n>lbl_TblWcdTitle}" id="lbl_TblWcdTitle" design="Bold" class="TblTitlediv"/>
+                            </FlexBox>
+
+                            <FlexBox id="flx_TblWcd">
+                                                  
+                                <Label text="{i18n>lbl_TblWcd}" id="lbl_TblWcd" design="Bold" class="TblTitle"/>
+                            </FlexBox>
+
+                            <FlexBox id="wcdTable">
+                                <Label id="lblWcdTbl" class="wcdTble" text=""></Label>
+                                <Table id="wcd_table"  
+                                width="1000px" 
+                                items="{/val_wcd_table}" 
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="wcdTble">
+                                    <columns>
+                                        <Column id="Funloc" >
+                                            <header>
+                                                <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="Fun Loc" 
+                                                id="lblFunLoc"/>
+                                            </header>
+                                        </Column>
+                                        <Column id="Type" >
+                                            <header>
+                                                <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="Type" 
+                                                id="lblTxtType"/>
+                                            </header>
+                            
+                                        </Column>
+                                        <Column id="Wcd">
+                                            <header>
+                                                <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="WCD#" 
+                                                id="lblWcd"/>
+                                            </header>
+                                
+                                            </Column>
+
+                                            <Column id="Issued">
+                                                <header>
+                                                    <Label 
+                                                    class="tablefont"
+                                                    design="Bold"
+                                                    text="Issued To" 
+                                                    id="lblIssTo"/>
+                                                </header>
+                                            </Column>
+
+                                            <Column id="ShTxt" class="tablefont">
+                                                <header >
+                                                    <Label 
+                                                    class="tablefont"
+                                                    design="Bold"
+                                                    text="Short Text" 
+                                                    id="lblSrtTxt"/>
+                                                </header>
+                                
+                                            </Column>
+                                        </columns>
+
+                                            <items >
+                                                <ColumnListItem id="_IDGenColumnListItem1" class="table">
+                                                    <cells>
+                                                        <Text id="Tplnr" text="{Tplnr}"/>
+                                                        <Text id="Wcuse" text="{Wcuse}"/>
+                                                        <Text id="Wcnr" text="{Wcnr}"/>
+                                                        <Text id="Genvname" text="{Genvname}"/>
+                                                        <Text id="Stxt" text="{Stxt}"/>
+                                                    </cells>
+                                                </ColumnListItem>
+                                            </items>
+                                        </Table>
+                                    </FlexBox>
+
+                                <Label text="" id="lbl_TblWcdSpace" design="Bold" class="HeaderLabelM"/>
+                                <FlexBox id="flx_TblPlantStat0">                                      
+                                <Label text="{i18n>lbl_TblWcdTitle}" id="lbl_TblWcdTitle1" design="Bold" class="TblTitlediv"/>
+                            </FlexBox>
+                                <FlexBox id="flx_TblPlantStat">
+                                  <!-- Plant Flows & Unit Run Status -->
+                                <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStat" design="Bold" class="TblTitle"/>
+                                </FlexBox>
+                            
+                            <FlexBox id="plntTable">
+                                <Label id="lblPlntTbl" class="wcdTble" text=""></Label>
+                                <Table id="plnt_unit"  
+                                width="1000px" 
+                                items="{/val_plntt}"  
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="wcdTble">
+                                <columns >
+                          <Column id="colfunloc1" width="185px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc" 
+                             id="lblPuntFunLoc"/>
+                             </header>
+                          </Column>
+
+                            <Column id="colfunlocDesc" width="250px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc Description" 
+                             id="lblPuntFunLocDes"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatus" width="100px">
+                          <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Status" 
+                             id="lblPuntStat"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmw" width="100px">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="MW" 
+                             id="lblPuntMw"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfs">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="CFS" 
+                             id="lblPuntCfs"/>
+                             </header>
+                          </Column>
+
+                      
+                            </columns>
+                            <items>
+                            <ColumnListItem id="lstitem2" class="table" >
+                            <cells>
+                            <Text id="txtSapFuncLoc" text="{SapFuncLoc}" />
+                            <Text id="txtSapFuncLocD" text="{Pltxt}" />
+                            <Text id="txtstatus1" text="{Status}"/>
+                            <Text id="txtmw1" text="{Mw}"/>
+                            <Text id="txtcfs1" text="{Cfs}"/>
+                            </cells>
+                            </ColumnListItem>
+                            </items>
+                            </Table>
+                            </FlexBox>
+                         </lay:VerticalLayout>
+                         <!--Second table reporting delta-->
+                         <lay:VerticalLayout id="vlyTblsdt" class="sapUiContentPadding equalColumns">
+
+                         <!-- Title -->  
+                    <FlexBox id="flx_TblWcdDT">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleDT}" id="lbl_TblWcdTitle1DT" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                    <FlexBox id="flx_TblWcdDTT">  
+                        <Label text="{i18n>lbl_TblWcd}" id="lbl_TblWcdDT" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTableDT">
+                            <Label id="lblWcdTblDT" class="wcdTble" text=""></Label>
+                            <Table id="wcd_tableDT"  
+                            width="1000px" 
+                            items="{/val_wcd_tableDT}" 
+                            backgroundDesign="Solid" 
+                            fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocDT" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Fun Loc" 
+                                            id="lblFunLocDT"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypeDT" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Type" 
+                                            id="lblTxtTypeDT"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdDT">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="WCD#" 
+                                            id="lblWcdDT"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedDT">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Issued To" 
+                                            id="lblIssToDT"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtDT" class="tablefont">
+                                        <header >
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Short Text" 
+                                            id="lblSrtTxtDT"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items >
+                                <ColumnListItem id="_IDGenColumnListItem1DT" class="table">
+                                    <cells>
+                                        <Text id="TplnrDT" text="{Tplnr}"/>
+                                        <Text id="WcuseDT" text="{Wcuse}"/>
+                                        <Text id="WcnrDT" text="{Wcnr}"/>
+                                        <Text id="GenvnameDT" text="{Genvname}"/>
+                                        <Text id="StxtDT" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpaceDT" design="Bold" class="HeaderLabelM"/>
+                                                 <!-- Title -->  
+                    <FlexBox id="flx_TblWcdDT2">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleDT}" id="lbl_TblWcdTitle1DT2" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                    <FlexBox id="flx_TblPlantStat1">
+                        <!-- Plant Flows & Unit Run Status -->
+                    <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStat1" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+                       
+                    <FlexBox id="plntTableDT">
+                        <Label id="lblPlntTblDT" class="wcdTble" text=""></Label>
+                        <Table id="plnt_unitDT"  
+                        width="1000px" 
+                        items="{/val_plnttDT}"  
+                        backgroundDesign="Solid" 
+                        fixedLayout="false" class="wcdTble">
+                        <columns >
+                          <Column id="colfunloc1DT" width="185px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc" 
+                             id="lblPuntFunLocDT"/>
+                             </header>
+                          </Column>
+
+                        <Column id="colfunloc1DT1" width="250px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc Description" 
+                             id="lblPuntFunLocDT1"/>
+                             </header>
+                          </Column>
+
+                          
+
+                         <Column id="colstatusDT" width="100px">
+                          <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Status" 
+                             id="lblPuntStatDT"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmwDT" width="100px">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="MW" 
+                             id="lblPuntMwDT"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfsDT">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="CFS" 
+                             id="lblPuntCfsDT"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2DT" class="table" >
+                        <cells>
+                        <Text id="txtSapFuncLocDT" text="{SapFuncLoc}" />
+                        <Text id="txtSapFuncLocDe" text="{Pltxt}" />
+                        <Text id="txtstatus1DT" text="{Status}"/>
+                        <Text id="txtmw1DT" text="{Mw}"/>
+                        <Text id="txtcfs1DT" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+                         </lay:VerticalLayout>
+
+                          <!--final Second table reporting delta-->
+
+                           <lay:VerticalLayout id="vlyTblsSL" class="sapUiContentPadding equalColumns">
+                       
+
+                        
+                        <!-- ********** table 3 san luis ********** -->
+                    <FlexBox id="flx_TblWcdSL0">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSL}" id="lbl_TblWcdTitle1SL" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                        <FlexBox id="flx_TblWcdSL">
+                            <!-- ********** lbl_TblWcd=WCD Reporting at 2400 ********** -->
+                            <Label text="{i18n>lbl_TblWcd}" id="lbl_TblWcdSL" design="Bold" class="TblTitle"/>
+                        </FlexBox>
+
+                        <FlexBox id="wcdTableSL">
+                            <Label id="lblWcdTblSL" class="wcdTble" text=""></Label>
+                            <Table id="wcd_tableSL"  
+                                width="1000px" 
+                                items="{/val_wcd_tableSL}" 
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocSL" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Fun Loc" 
+                                            id="lblFunLocSL"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypeSL" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Type" 
+                                            id="lblTxtTypeSL"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdSL">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="WCD#" 
+                                            id="lblWcdSL"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedSL">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Issued To" 
+                                            id="lblIssToSL"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtSL" class="tablefont">
+                                        <header >
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Short Text" 
+                                            id="lblSrtTxtSL"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                                <items >
+                                    <ColumnListItem id="_IDGenColumnListItem1SL" class="table">
+                                        <cells>
+                                            <Text id="TplnrSL" text="{Tplnr}"/>
+                                            <Text id="WcuseSL" text="{Wcuse}"/>
+                                            <Text id="WcnrSL" text="{Wcnr}"/>
+                                            <Text id="GenvnameSL" text="{Genvname}"/>
+                                            <Text id="StxtSL" text="{Stxt}"/>
+                                        </cells>
+                                </ColumnListItem>
+                                </items>
+                            </Table>
+                        </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpaceSL" design="Bold" class="HeaderLabelM"/>
+                      <FlexBox id="flx_TblWcdSL1">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSL}" id="lbl_TblWcdTitle1SL1" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                           <FlexBox id="flx_TblPlantStatSL">
+                                  <!-- Plant Flows & Unit Run Status -->
+                                <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStatSL" design="Bold" class="TblTitle"/>
+                                </FlexBox>
+
+                       
+                        <FlexBox id="plntTableSL">
+                            <Label id="lblPlntTblSL" class="wcdTble" text=""></Label>
+                            <Table id="plnt_unitSL"  
+                                width="1000px" 
+                                items="{/val_plnttSL}"  
+                                backgroundDesign="Solid" 
+                                fixedLayout="false" class="wcdTble">
+                                <columns >
+                                    <Column id="colfunloc1SL" width="185px">
+                                        <header >
+                                            <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="Fun Loc" 
+                                                id="lblPuntFunLocSL"/>
+                                        </header>
+                                    </Column>
+
+                                      <Column id="colfunlocDet" width="250px">
+                                        <header >
+                                            <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="Fun Loc Description" 
+                                                id="lblPuntFunLocSLDet"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="colstatusSL" width="100px">
+                                        <header>
+                                            <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="Status" 
+                                                id="lblPuntStatSL"/>
+                                        </header>
+                                    </Column>
+                          
+                                    <Column id="colmwSL" width="100px">
+                                        <header>
+                                            <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="MW" 
+                                                id="lblPuntMwSL"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="colcfsSL">
+                                        <header>
+                                            <Label 
+                                                class="tablefont"
+                                                design="Bold"
+                                                text="CFS" 
+                                                id="lblPuntCfsSL"/>
+                                        </header>
+                                    </Column>
+                      
+                                </columns>
+                            
+                                <items>
+                                    <ColumnListItem id="lstitem2SL" class="table" >
+                                        <cells>
+                                            <Text id="txtSapFuncLocSL" text="{SapFuncLoc}" />
+                                             <Text id="txtSapFuncLocDet" text="{Pltxt}" />
+                                            <Text id="txtstatus1SL" text="{Status}"/>
+                                            <Text id="txtmw1SL" text="{Mw}"/>
+                                            <Text id="txtcfs1SL" text="{Cfs}"/>
+                                        </cells>
+                                    </ColumnListItem>
+                                </items>
+                            </Table>
+                        </FlexBox>
+                      </lay:VerticalLayout>
+
+                      <!--table 4 san joaquin-->
+                    <lay:VerticalLayout id="vlyTblsSJ" class="sapUiContentPadding equalColumns">
+                      <FlexBox id="flx_TblWcdSJ0">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSJ}" id="lbl_TblWcdTitle1SJ0" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                    <FlexBox id="flx_TblWcdSJ">
+                                            <!-- lbl_TblWcd=WCD Reporting at 2400 -->
+                        <Label text="{i18n>lbl_TblWcd}" id="lbl_TblWcdSJ" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTableSJ">
+                            <Label id="lblWcdTblSJ" class="wcdTble" text=""></Label>
+                            <Table id="wcd_tableSJ"  
+                            width="1000px" 
+                            items="{/val_wcd_tableSJ}" 
+                            backgroundDesign="Solid" 
+                            fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocSJ" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Fun Loc" 
+                                            id="lblFunLocSJ"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypeSJ" >
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Type" 
+                                            id="lblTxtTypeSJ"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdSJ">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="WCD#" 
+                                            id="lblWcdSJ"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedSJ">
+                                        <header>
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Issued To" 
+                                            id="lblIssToSJ"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtSJ" class="tablefont">
+                                        <header >
+                                            <Label 
+                                            class="tablefont"
+                                            design="Bold"
+                                            text="Short Text" 
+                                            id="lblSrtTxtSJ"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items >
+                                <ColumnListItem id="_IDGenColumnListItem1SJ" class="table">
+                                    <cells>
+                                        <Text id="TplnrSJ" text="{Tplnr}"/>
+                                        <Text id="WcuseSJ" text="{Wcuse}"/>
+                                        <Text id="WcnrSJ" text="{Wcnr}"/>
+                                        <Text id="GenvnameSJ" text="{Genvname}"/>
+                                        <Text id="StxtSJ" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpaceSJ" design="Bold" class="HeaderLabelM"/>
+                     <FlexBox id="flx_TblWcdSJ1">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSJ}" id="lbl_TblWcdTitle1SJ1" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                    <FlexBox id="flx_TblPlantStatSJ">
+                        <!-- Plant Flows & Unit Run Status -->
+                    <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStatSJ" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+                       
+                    <FlexBox id="plntTableSJ">
+                        <Label id="lblPlntTblSJ" class="wcdTble" text=""></Label>
+                        <Table id="plnt_unitSJ"  
+                        width="1000px" 
+                        items="{/val_plnttSJ}"  
+                        backgroundDesign="Solid" 
+                        fixedLayout="false" class="wcdTble">
+                        <columns >
+                          <Column id="colfunloc1SJ" width="185px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc" 
+                             id="lblPuntFunLocSJ"/>
+                             </header>
+                          </Column>
+
+                            <Column id="colfunlocDSJ" width="250px">
+                          <header >
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Fun Loc Description" 
+                             id="lblPuntFunLocDSJ"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatusSJ" width="100px">
+                          <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="Status" 
+                             id="lblPuntStatSJ"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmwSJ" width="100px">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="MW" 
+                             id="lblPuntMwSJ"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfsSJ">
+                         <header>
+                             <Label 
+                             class="tablefont"
+                             design="Bold"
+                             text="CFS" 
+                             id="lblPuntCfsSJ"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2SJ" class="table" >
+                        <cells>
+                        <Text id="txtSapFuncLocSJ" text="{SapFuncLoc}" />
+                        <Text id="txtSapFuncLocDes" text="{Pltxt}" />
+                        <Text id="txtstatus1SJ" text="{Status}"/>
+                        <Text id="txtmw1SJ" text="{Mw}"/>
+                        <Text id="txtcfs1SJ" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+                         </lay:VerticalLayout>
+<!--Termina sección san joaquin de reportes-->
+<!--Inicia sección Tablas soutern-->
+                    <lay:VerticalLayout id="vlyTblsSou" class="sapUiContentPadding equalColumns">
+                    <FlexBox id="flx_TblWcdSou0">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSou}" id="lbl_TblWcdTitle1Sou0" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+
+                    <FlexBox id="flx_TblWcdSou">
+                                            <!-- lbl_TblWcd=WCD Reporting at 2400 -->
+                        <Label text="{i18n>lbl_TblWcd}" id="lbl_TblWcdSou" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+
+                        <FlexBox id="wcdTableSou">
+                            <Label id="lblWcdTblSou" class="wcdTble" text=""/>
+                            <Table id="wcd_tableSou" width="1000px" items="{/val_wcd_tableSou}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocSou">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Fun Loc" id="lblFunLocSou"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypeSou">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Type" id="lblTxtTypeSou"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdSou">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="WCD#" id="lblWcdSou"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedSou">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Issued To" id="lblIssToSou"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtSou" class="tablefont">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Short Text" id="lblSrtTxtSou"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1Sou" class="table">
+                                    <cells>
+                                        <Text id="TplnrSou" text="{Tplnr}"/>
+                                        <Text id="WcuseSou" text="{Wcuse}"/>
+                                        <Text id="WcnrSou" text="{Wcnr}"/>
+                                        <Text id="GenvnameSou" text="{Genvname}"/>
+                                        <Text id="StxtSou" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+
+                        <Label text="" id="lbl_TblWcdSpaceSou" design="Bold" class="HeaderLabelM"/>
+                       <FlexBox id="flx_TblWcdSou1">                                                                                                  
+                     <Label text="{i18n>lbl_TblWcdTitleSou}" id="lbl_TblWcdTitle1Sou1" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                        <FlexBox id="flx_TblPlantStatSou">
+                                             <!-- Plant Flows & Unit Run Status -->
+                            <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStatSo" design="Bold" class="TblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTableSou">
+                        <Label id="lblPlntTblSou" class="wcdTble" text=""/>
+                        <Table id="plnt_unitSou" width="1000px" items="{/val_plnttSou}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                        <columns>
+                          <Column id="colfunloc1Sou" width="185px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc" id="lblPuntFunLocSou"/>
+                             </header>
+                          </Column>
+
+                           <Column id="colfunlocDetSou" width="185px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc Description" id="lblPuntFunLocDetSou"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatusSou" width="100px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Status" id="lblPuntStatSou"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmwSou" width="100px">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="MW" id="lblPuntMwSou"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfsSou">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="CFS" id="lblPuntCfsSou"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2Sou" class="table">
+                        <cells>
+                        <Text id="txtSapFuncLocSou" text="{SapFuncLoc}"/>
+                         <Text id="txtSapFuncLocSouD" text="{Pltxt}" />
+                        <Text id="txtstatus1Sou" text="{Status}"/>
+                        <Text id="txtmw1Sou" text="{Mw}"/>
+                        <Text id="txtcfs1Sou" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+                         </lay:VerticalLayout>
+<!--SWP Resources-->
+<!--Pine Flat Powerplant WCD-->
+                   <lay:VerticalLayout id="vlyTblsPine" class="sapUiContentPadding equalColumns">
+
+                    <Label text="" id="lbl_TblWcdSpaceSWP" design="Bold" class="HeaderLabelM"/>
+                       <FlexBox id="flx_TblWcdPine">                                                                                                  
+                     <Label text="{i18n>lbl_SWP}" id="lbl_TblWcdWcdPine" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+
+                     <FlexBox id="flx_TblWcdPine1">
+                    <!-- Plant Flows & Unit Run Status -->
+                    <Label text="{i18n>lbl_pineTitle}" id="lbl_pineTitle" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+                    
+                     <FlexBox id="flx_TblWcdPine2">
+                    <!-- wcd reporting at 2400 -->
+                    <Label text="{i18n>lbl_TblWcd}" id="lbl_pineTitle1" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+                       <FlexBox id="wcdTablePine">
+                            <Label id="lblWcdTblPine" class="wcdTble" text=""/>
+                            <Table id="wcd_tablePine" width="1000px" items="{/val_wcd_tablePine}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocPine">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Fun Loc" id="lblFunLocPine"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypePine">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Type" id="lblTxtTypePine"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdPine">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="WCD#" id="lblWcdPine"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedPine">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Issued To" id="lblIssToPine"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtPine" class="tablefont">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Short Text" id="lblSrtTxtPine"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1Pine" class="table">
+                                    <cells>
+                                        <Text id="TplnPine" text="{Tplnr}"/>
+                                        <Text id="WcusePine" text="{Wcuse}"/>
+                                        <Text id="WcnrPine" text="{Wcnr}"/>
+                                        <Text id="GenvnamePine" text="{Genvname}"/>
+                                        <Text id="StxtPine" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                    <!--Pine Flat Powerplant Plant Flows & Unit Run Status-->
+                     <Label text="" id="lbl_TblWcdSpacePine" design="Bold" class="HeaderLabelM"/>
+                       <FlexBox id="flx_TblWcdPine3">                                                                                                  
+                     <Label text="{i18n>lbl_pineTitle}" id="lbl_TblWcdTitle1Pine" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                        <FlexBox id="flx_TblPlantStatPine">
+                                             <!-- Plant Flows & Unit Run Status -->
+                            <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStatPine" design="Bold" class="TblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTablePine">
+                        <Label id="lblPlntTblPine" class="wcdTble" text=""/>
+                        <Table id="plnt_unitPine" width="1000px" items="{/val_Run_Pine}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                        <columns>
+                          <Column id="colfunloc1Pine" width="185px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc" id="lblPuntFunLocPine"/>
+                             </header>
+                          </Column>
+
+                           <Column id="colfunlocDetPine" width="250px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc Description" id="lblPuntFunLocDetPine"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatusPine" width="100px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Status" id="lblPuntStatPine"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmwPine" width="100px">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="MW" id="lblPuntMwPine"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfsPine">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="CFS" id="lblPuntCfsPine"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2Pine" class="table">
+                        <cells>
+                        <Text id="txtSapFuncLocPine2" text="{SapFuncLoc}"/>
+                         <Text id="txtSapFuncLocPine" text="{Pltxt}" />
+                        <Text id="txtstatus1Pine" text="{Status}"/>
+                        <Text id="txtmw1Pine" text="{Mw}"/>
+                        <Text id="txtcfs1Pine" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+
+
+                       </lay:VerticalLayout>
+                       <!--Reid Gardner  WCD-->
+                   <lay:VerticalLayout id="vlyTblsReid" class="sapUiContentPadding equalColumns">
+                       <Label text="" id="lbl_TblWcdSpaceReid" design="Bold" class="HeaderLabelM"/>
+
+
+                     <FlexBox id="flx_TblWcdlbl_SWP">
+                    <!-- Plant Flows & Unit Run Status -->
+                    <Label text="{i18n>lblReidTitle}" id="lbl_ReidTitle" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                    
+                     <FlexBox id="flx_TblWcdReid2">
+                    <!-- wcd reporting at 2400 -->
+                    <Label text="{i18n>lbl_TblWcd}" id="lbl_pineTitle3" design="Bold" class="TblTitle"/>
+                    </FlexBox>
+                       <FlexBox id="wcdTableReid">
+                            <Label id="lblWcdTblReid" class="wcdTble" text=""/>
+                            <Table id="wcd_tableReid" width="1000px" items="{/val_wcd_tableReid}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                                <columns>
+                                    <Column id="FunlocReid">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Fun Loc" id="lblFunLocReid"/>
+                                        </header>
+                                    </Column>
+                                    <Column id="TypeReid">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Type" id="lblTxtTypeReid"/>
+                                        </header>
+                          
+                                    </Column>
+                                    <Column id="WcdReid">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="WCD#" id="lblWcdReid"/>
+                                        </header>
+                          
+                                    </Column>
+
+                                    <Column id="IssuedReid">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Issued To" id="lblIssToReid"/>
+                                        </header>
+                                    </Column>
+
+                                    <Column id="ShTxtReid" class="tablefont">
+                                        <header>
+                                            <Label class="tablefont" design="Bold" text="Short Text" id="lblSrtTxtReid"/>
+                                        </header>
+                         
+                                    </Column>
+                                </columns>
+
+                            <items>
+                                <ColumnListItem id="_IDGenColumnListItem1Reid" class="table">
+                                    <cells>
+                                        <Text id="TplnReid" text="{Tplnr}"/>
+                                        <Text id="WcuseReid" text="{Wcuse}"/>
+                                        <Text id="WcnrReid" text="{Wcnr}"/>
+                                        <Text id="GenvnameReid" text="{Genvname}"/>
+                                        <Text id="StxtReid" text="{Stxt}"/>
+                                    </cells>
+                                </ColumnListItem>
+                            </items>
+                        </Table>
+                    </FlexBox>
+                    <!--Pine Flat Powerplant Plant Flows & Unit Run Status-->
+                     <Label text="" id="lbl_TblWcdSpaceReid2" design="Bold" class="HeaderLabelM"/>
+                       <FlexBox id="flx_TblWcdReid3">                                                                                                  
+                     <Label text="{i18n>lblReidTitle}" id="lbl_TblWcdTitle1Reid" design="Bold" class="TblTitlediv"/>
+                    </FlexBox>
+                        <FlexBox id="flx_TblPlantStatReid">
+                                             <!-- Plant Flows & Unit Run Status -->
+                            <Label text="{i18n>lbl_TblplantPOC}" id="lbl_TblPlantStatReid" design="Bold" class="TblTitle"/>
+                        </FlexBox>
+                       
+                    <FlexBox id="plntTableReid">
+                        <Label id="lblPlntTblReid" class="wcdTble" text=""/>
+                        <Table id="plnt_unitReid" width="1000px" items="{/val_Run_PineReid}" backgroundDesign="Solid" fixedLayout="false" class="wcdTble">
+                        <columns>
+                          <Column id="colfunloc1Reid" width="185px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc" id="lblPuntFunLocReid"/>
+                             </header>
+                          </Column>
+
+                           <Column id="colfunlocDetReid" width="250px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Fun Loc Description" id="lblPuntFunLocDetReid"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colstatusReid" width="100px">
+                          <header>
+                             <Label class="tablefont" design="Bold" text="Status" id="lblPuntStatReid"/>
+                             </header>
+                          </Column>
+                          
+                         <Column id="colmwReid" width="100px">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="MW" id="lblPuntMwReid"/>
+                             </header>
+                          </Column>
+
+                         <Column id="colcfsReid">
+                         <header>
+                             <Label class="tablefont" design="Bold" text="CFS" id="lblPuntCfsReid"/>
+                             </header>
+                          </Column>
+
+                      
+                        </columns>
+                        <items>
+                        <ColumnListItem id="lstitem2Reid" class="table">
+                        <cells>
+                        <Text id="txtSapFuncLocReid2" text="{SapFuncLoc}"/>
+                         <Text id="txtSapFuncLocReid" text="{Pltxt}" />
+                        <Text id="txtstatus1Reid" text="{Status}"/>
+                        <Text id="txtmw1Reid" text="{Mw}"/>
+                        <Text id="txtcfs1Reid" text="{Cfs}"/>
+                        </cells>
+                        </ColumnListItem>
+                        </items>
+                        </Table>
+                        </FlexBox>
+                     
+
+                     </lay:VerticalLayout>
+
+
+
+
+
+
+
+
+
+
+
+<!-- sección Remarks" -->
+                <FlexBox id="flxRemarks">                 
+                <Label text="{i18n>lbl_RemarksHdr}" id="lbl_RemarksHdr" design="Bold" class="HeaderLabelM"/>
+                </FlexBox>
+                <FlexBox id="flxRemarkBtn">  
+                  <Button id="btn_Clear" text="{i18n>lbl_RemarksBtn}" press="onClear" class="btnrRem" app:id="TxtRemarkText" icon="sap-icon://delete"/>
+                </FlexBox>
+                <FlexBox id="flx" >
+                 
+                 </FlexBox>
+                  <FlexBox id="flxRemarkTxt" >
+                   <Label id="lblRemarkTxtSpace" text="" class="rmrks"></Label>
+                  <TextArea id="TxtRemarkText" value="{/val_Remarks}" width="1189px" height="250px" tooltip="{/valTTremark}" />
+                    </FlexBox>
+                    <Label id="lblRemarkspace" text="" class="rmrks"></Label>
+<!-- Termina sección Remarks" -->
+
+ <FlexBox id="flx_Submitbtn">
+                            <Label id="lbl_submspc" text="" class="comboLabel" width="475px"/>
+                                <Button id="btn_Submit" text="{i18n>btn_submit}" press="onSubmit" class="btnSubmit"
+                                app:id="" icon="sap-icon://accept" width="250px"/>
+
+                                <Label id="lbl_submerror" text="{/valSubmitted}" class="lblSubmit" width="275px"/>
+                            </FlexBox>
+                     
+
+ 
+
+
+
+
+   
+ 
+
+
+                  </lay:VerticalLayout>
+                    <content />
+                     </ScrollContainer> 
+                </Page>
+            </pages>
+        </App>
+    </Shell>
+</mvc:View>

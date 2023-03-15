@@ -1,0 +1,61 @@
+{
+     "lstStlNat": [
+    {
+        "key": "keyStlNat1",
+        "text": "NORMAL"
+    },
+    {
+        "key": "keyStlNat2",
+        "text": "ELEVATED"
+    },
+    {
+        "key": "keyStlNat3",
+        "text": "IMMINENT"
+    }
+],
+"lstStlDwr": [
+    {
+        "key": "keyStlDwr1",
+        "text": "NORMAL"
+    },
+    {
+        "key": "keyStlDwr2",
+        "text": "ELEVATED"
+    },
+    {
+        "key": "keyStlDwr3",
+        "text": "IMMINENT"
+    }
+],
+    "val_pocRem":"",
+    "valMandt":"",
+    "valMcdate":"",
+    "valUsrName":"",
+    "valOpName":"",
+    "val_lstStlNat":"",
+    "val_lstStlDwr":"",
+    "valDateFormatted":"",
+    "valDate":"",
+    "valSubmitted":"",
+    "val_wcd_table":"",
+    "val_plntt":"",
+    "val_wcd_tableDT":"",
+    "val_plnttDT":"",
+    "val_wcd_tableSL":"",
+    "val_plnttSL":"",
+    "val_wcd_tableSJ":"",
+    "val_plnttSJ":"",
+    "val_wcd_tableSou":"",
+    "val_plnttSou":"",
+    "val_Remarks":"",
+    "val_wcd_tablePine":"",
+    "val_Run_Pine":"",
+    "val_wcd_tableReid":"",
+    "val_Run_PineReid":""
+
+
+
+
+
+
+}
